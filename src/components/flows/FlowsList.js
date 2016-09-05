@@ -25,14 +25,15 @@ var FlowsList = React.createClass({
   render: function() {
     return (
       <div className="">
-        <h3>Flows List -- {this.props.name}</h3>
+        <div>
+          <h3>Flows List -- {this.props.name}</h3>
+          <span><button name="">Add Flow</button></span>
+        </div>
         <ul>
-
           {this.state.flows.map(function(flow) {
             return <FlowsListItem />
           })
         }
-
         </ul>
       </div>
     )
