@@ -7,9 +7,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="main">
-        {
-          /* <FlowsList name="default" flows={['prova']}/> */
-        }
+        {/* <FlowsList name="default" flows={['prova']}/> */}
         <button onClick={this.login}>Github Login</button>
       </div>
     );
@@ -18,18 +16,14 @@ class AppComponent extends React.Component {
   login() {
     console.log('LOGIN');
     $.get({
-      dataType: 'jsonp',
-      url: 'http://localhost:5000/github-auth'
-    }).done(function(data) {
-      console.log('AUTH DONE', data);
-    })
-      // .then(function(data) {
-      //   console.log(data);
-      // })
+      dataType: 'json',
+      url: 'http://localhost:5000/github-auth'}
+    ).done(function(data) {
+      location.href = data.auth_url;
+    });
   }
 }
 
-AppComponent.defaultProps = {
-};
+AppComponent.defaultProps = {};
 
 export default AppComponent;
