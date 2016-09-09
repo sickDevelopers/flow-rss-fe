@@ -18,7 +18,14 @@ class GithubAuthback extends React.Component {
       data: obj
     })
     .done(function(data) {
-      console.log(data);
+      if(data.access_token) {
+        $.ajaxSetup({
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader('Authorization', 'bearer ' + data.access_token);
+            }
+        });
+        location.href = '/#/user'
+      }
     })
     .fail(function(error) {
       console.error(error);
@@ -28,7 +35,7 @@ class GithubAuthback extends React.Component {
   render() {
     return (
       <div className="main">
-        AUTH BACK!
+        Loading...
       </div>
     );
   }
