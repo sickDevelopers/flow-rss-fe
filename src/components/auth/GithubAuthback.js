@@ -12,11 +12,16 @@ class GithubAuthback extends React.Component {
     urlParams.forEach(function(param) {
       obj[param.split('=')[0]] = param.split('=')[1];
     });
-    $.get({
+    $.post({
       dataType: 'json',
-      url: 'http://localhost:5000/github-authback'
-    }).done(function(data) {
+      url: 'http://localhost:5000/github-authback',
+      data: obj
+    })
+    .done(function(data) {
       console.log(data);
+    })
+    .fail(function(error) {
+      console.error(error);
     })
   }
 
