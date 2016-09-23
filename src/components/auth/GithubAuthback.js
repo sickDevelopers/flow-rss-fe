@@ -24,7 +24,7 @@ class GithubAuthback extends React.Component {
                 xhr.setRequestHeader('Authorization', 'bearer ' + data.access_token);
             }
         });
-        location.href = '/#/user'
+        location.href = '/#/dashboard'
       }
     })
     .fail(function(error) {
